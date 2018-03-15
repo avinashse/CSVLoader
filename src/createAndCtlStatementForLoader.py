@@ -14,8 +14,7 @@ class CreateCTLFile():
         def __createCTLStatement(self):
                 with open(self.fileName) as fp:
                         header = fp.readline().strip().split(self.delimeter)
-                numOfColumns=header.__len__()
-
+                
                 for columns in header:
                         self.createTableStaement += "\n"
                         self.ctlStatement += "\n"
