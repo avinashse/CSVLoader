@@ -14,7 +14,7 @@ class CreateCTLFile():
         def __createCTLStatement(self):
                 with open(self.fileName) as fp:
                         header = fp.readline().strip().split(self.delimeter)
-                
+
                 for columns in header:
                         self.createTableStaement += "\n"
                         self.ctlStatement += "\n"
@@ -43,12 +43,7 @@ class CreateCTLFile():
                 command1="sed -i '1d' " + self.fileName +  "_FINAL"
                 command2="cp " + self.fileName +  " " + self.fileName + "_FINAL"
 
-                os.system(command2)
                 os.system(command1)
+				os.system(command2)
+                
 
-                print self.createTableStaement
-                print
-                print self.ctlStatement
-
-if __name__ == '__main__':
-        createCTLFile = CreateCTLFile("loader_file_1.dat",",")
