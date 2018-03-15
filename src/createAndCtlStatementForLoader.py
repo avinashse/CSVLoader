@@ -10,6 +10,7 @@ class CreateCTLFile():
                 self.createTableStaement="CREATE TABLE TMP_" + self.tableName + " ( "
                 self.ctlStatement="load data \nappend \ninto table " + self.tableName + " \nfields terminated by " + "\",\" \nTRAILING NULLCOLS("
                 self.__createCTLStatement()
+                self.__createCtlAndCreateFile()
 
         def __createCTLStatement(self):
                 with open(self.fileName) as fp:
@@ -26,10 +27,8 @@ class CreateCTLFile():
                         self.createTableStaement += ","
                         self.ctlStatement += ","
 
-
                 self.createTableStaement += ");"
                 self.ctlStatement += ");"
-                self.__createCtlAndCreateFile()
 
         def __createCtlAndCreateFile(self):
                 fp = open(self.tableName+".ctl",'w')
@@ -44,6 +43,5 @@ class CreateCTLFile():
                 command2="cp " + self.fileName +  " " + self.fileName + "_FINAL"
 
                 os.system(command1)
-				os.system(command2)
-                
+                os.system(command2)
 
